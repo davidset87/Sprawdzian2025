@@ -1,0 +1,48 @@
+@model IEnumerable<Zestaw1.Models.Panel>
+
+@{
+    ViewData["Title"] = "Lista Płyt";
+}
+
+<h1>Lista Płyt</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Dodaj Nową Płytę</a>
+</p>
+
+<table class="table table-striped">
+    <thead class="table-dark">
+    <tr>
+        <th>Wymiary</th>
+        <th>Kolor</th>
+        <th>Brzegowanie</th>
+        <th>Cena (PLN)</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.GetDimensions()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @(item.HasBorder ? "Tak" : "Nie")
+            </td>
+            <td>
+                <strong>@item.Price.ToString("C")</strong>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Brak płyt w bazie danych. <a asp-action="Create">Dodaj pierwszą płytę!</a>
+    </div>
+}

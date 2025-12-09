@@ -1,0 +1,91 @@
+@model Zestaw1.Models.Panel
+
+@{
+    ViewData["Title"] = "Dodaj Nową Płytę";
+}
+
+<h1>Dodaj Nową Płytę</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label asp-for="Length" class="control-label"></label>
+                        <input asp-for="Length" class="form-control" />
+                        <span asp-validation-for="Length" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label asp-for="LengthUnit" class="control-label"></label>
+                        <select asp-for="LengthUnit" class="form-control" asp-items="Html.GetEnumSelectList<Zestaw1.Models.UnitType>()"></select>
+                        <span asp-validation-for="LengthUnit" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label asp-for="Width" class="control-label"></label>
+                        <input asp-for="Width" class="form-control" />
+                        <span asp-validation-for="Width" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label asp-for="WidthUnit" class="control-label"></label>
+                        <select asp-for="WidthUnit" class="form-control" asp-items="Html.GetEnumSelectList<Zestaw1.Models.UnitType>()"></select>
+                        <span asp-validation-for="WidthUnit" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Color" class="control-label"></label>
+                <select asp-for="Color" class="form-control" asp-items="Html.GetEnumSelectList<Zestaw1.Models.WoodColor>()"></select>
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check mb-3">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HasBorder" /> @Html.DisplayNameFor(model => model.HasBorder)
+                </label>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Dodaj Płytę</button>
+                <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
+            </div>
+        </form>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card bg-light">
+            <div class="card-header">
+                <h5>Informacje o cenach</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Ceny za kolor (za m²):</strong></p>
+                <ul>
+                    <li>Dąb: 5 PLN</li>
+                    <li>Orzech: 4 PLN</li>
+                    <li>Topola: 3 PLN</li>
+                    <li>Buk: 2 PLN</li>
+                    <li>Sosna: 1 PLN</li>
+                </ul>
+                <p><strong>Brzegowanie:</strong> 0.20 PLN za metr obwodu</p>
+                <p><strong>Ograniczenie:</strong> Żaden wymiar nie może przekraczać 1200 mm</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
