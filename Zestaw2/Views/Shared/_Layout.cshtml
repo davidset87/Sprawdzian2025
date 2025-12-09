@@ -26,6 +26,12 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Heroes" asp-action="Index">Heroes</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-controller="Panel" asp-action="Index">Płyty</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-controller="Panel" asp-action="Create">Nowa Płyta</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -48,9 +54,3 @@
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-<li class="nav-item">
-    <a class="nav-link text-dark" asp-controller="Panel" asp-action="Index">Płyty</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link text-dark" asp-controller="Panel" asp-action="Create">Nowa Płyta</a>
-</li>
